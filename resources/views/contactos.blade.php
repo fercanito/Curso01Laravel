@@ -7,7 +7,8 @@
 	<h3>{{ session('info') }}</h3>
 @else
 	<form method="POST" action="contacto" accept-charset="utf-8">
-		
+
+		{!! csrf_field() !!}
 		<p> <label for="nombre">
 			Nombre
 			<input type="text" name="nombre" value="{{ old('nombre') }}">
