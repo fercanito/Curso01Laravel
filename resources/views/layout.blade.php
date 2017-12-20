@@ -9,6 +9,10 @@
 			text-decoration: none;
 			color: red;
 		}
+		.error{
+			color: red;
+			font-size: 12px;
+		}
 	</style>
 </head>
 <body>

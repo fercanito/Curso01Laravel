@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateMessageRequest;
+//use App\Http\Request\CreateMessageRequest;
+
 
 class PagesController extends Controller
 {
@@ -22,15 +25,20 @@ class PagesController extends Controller
   
   }
 
-  public function mensajes(Request $request)
+  //public function mensajes(Request $request) request normal
+  public function mensajes(CreateMessageRequest $request) //request con clase
   {
+    //Para formularios con pocos campos no hay problema en hacer la validacion directamente en el controlador
+    //para muchos campos se recomienda crear un archivo "Request" con el comando
+    //php artisan make:request CreateMessageRequest
+    /*$this->validate($request,[
 
-    if ($request->has('nombre')) 
-    {
-      //return $request->all();
-      return 'Nombre '.$request->input('nombre');  
-    }
-      return 'No tiene nombre';  
+      'nombre'  => 'required',
+      'email'   => 'required|email',
+      'mensaje' => 'required|min:5'
+
+    ]);*/
+    return $request->all(); //datos del formulario
     
   }
 
