@@ -14,7 +14,6 @@ class PagesController extends Controller
   {
   	
   	return view('home');
-
   }
 
   public function contact()
@@ -25,20 +24,25 @@ class PagesController extends Controller
   
   }
 
-  //public function mensajes(Request $request) request normal
+  
   public function mensajes(CreateMessageRequest $request) //request con clase
   {
-    //Para formularios con pocos campos no hay problema en hacer la validacion directamente en el controlador
-    //para muchos campos se recomienda crear un archivo "Request" con el comando
-    //php artisan make:request CreateMessageRequest
-    /*$this->validate($request,[
 
-      'nombre'  => 'required',
-      'email'   => 'required|email',
-      'mensaje' => 'required|min:5'
+    /*$data = $request->all(); //datos del formulario
+    return response()->json([
+      'data' => $data
+    ],200)
+    ->header('TOKEN', 'secret');*/
 
-    ]);*/
-    return $request->all(); //datos del formulario
+    $data = $request->all();
+
+   /* return redirect()
+            ->route('contactos')
+            ->with('info','Tu mensaje a sido enviado correctamente');*/
+
+    //back() se utiliza para volver a la vista anterior
+     return back()->with('info','Tu mensaje a sido enviado correctamente');
+
     
   }
 
