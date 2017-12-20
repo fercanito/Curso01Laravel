@@ -22,6 +22,18 @@ class PagesController extends Controller
   
   }
 
+  public function mensajes(Request $request)
+  {
+
+    if ($request->has('nombre')) 
+    {
+      //return $request->all();
+      return 'Nombre '.$request->input('nombre');  
+    }
+      return 'No tiene nombre';  
+    
+  }
+
   public function saludo($nombre = "Invitado")
 
   {
