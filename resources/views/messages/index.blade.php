@@ -17,13 +17,13 @@
 		@forelse($messages as $message)
 		<tr>
 			<td>
-				<a href="{{ route('messages.show' , $message->id) }}">{{  $message->nombre  }}</a>
+				<a href="{{ route('mensajes.show' , $message->id) }}">{{  $message->nombre  }}</a>
 			</td>
 			<td>{{  $message->email   }}</td>
 			<td>{{  $message->mensaje }}</td>
 			<th>
-				<a href=" {{ route('messages.edit' , $message->id) }} ">Editar</a>
-				<form style="display: inline;" method="POST" action="{{ route('messages.destroy', $message->id) }}" accept-charset="utf-8">
+				<a href=" {{ route('mensajes.edit' , $message->id) }} ">Editar</a>
+				<form style="display: inline;" method="POST" action="{{ route('mensajes.destroy', $message->id) }}" accept-charset="utf-8">
 					{!! method_field('DELETE') !!}
 					{!! csrf_field() !!}
 					<button type="submit">Eliminar</button>

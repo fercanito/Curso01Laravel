@@ -32,9 +32,9 @@
 				
 			<a class="{{ activeMenu('saludos/*') }}" href="{{ route('saludos') }}" title="">Saludos</a>
 				
-			<a class="{{ activeMenu('mensajes/create') }}" href="{{ route('messages.create') }}" title="">Contactos</a>
+			<a class="{{ activeMenu('mensajes/create') }}" href="{{ route('mensajes.create') }}" title="">Contactos</a>
 
-			<a class="{{ activeMenu('mensajes') }}" href="{{ route('messages.index') }}" title="">Mensajes</a>
+			<a class="{{ activeMenu('mensajes') }}" href="{{ route('mensajes.index') }}" title="">Mensajes</a>
 				
 		</nav>
 	</header><!-- /header -->
