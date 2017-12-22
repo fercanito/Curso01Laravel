@@ -27,35 +27,6 @@ class PagesController extends Controller
   	return view('home');
   }
 
-  public function contact()
-
-  {
-  	
-  	return view('contactos');
-  
-  }
-
-  
-  public function mensajes(CreateMessageRequest $request) //request con clase
-  {
-
-    /*$data = $request->all(); //datos del formulario
-    return response()->json([
-      'data' => $data
-    ],200)
-    ->header('TOKEN', 'secret');*/
-
-    $data = $request->all();
-
-   /* return redirect()
-            ->route('contactos')
-            ->with('info','Tu mensaje a sido enviado correctamente');*/
-
-    //back() se utiliza para volver a la vista anterior
-     return back()->with('info','Tu mensaje a sido enviado correctamente');
-
-    
-  }
 
   public function saludo($nombre = "Invitado")
 

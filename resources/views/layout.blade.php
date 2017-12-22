@@ -25,7 +25,7 @@
 			}
 		?>
 
-		<h1>{{ request()->is('/') ? 'Estas en el home' : 'No estas en el home' }}</h1>
+		{{-- <h1>{{ request()->is('/') ? 'Estas en el home' : 'No estas en el home' }}</h1> --}}
 		<nav>
 			
 			<a class="{{ activeMenu('/') }}" href="{{ route('home') }}" title="">Inicio</a>
@@ -34,7 +34,19 @@
 				
 			<a class="{{ activeMenu('mensajes/create') }}" href="{{ route('mensajes.create') }}" title="">Contactos</a>
 
+			
+
+		
+
+			@if (auth()->check())
 			<a class="{{ activeMenu('mensajes') }}" href="{{ route('mensajes.index') }}" title="">Mensajes</a>
+					<a class="{{ activeMenu('logout') }}" href="/logout" title="">Cerrar sesión de {{ auth()->user()->email }}</a>
+			@endif
+
+			@if (auth()->guest())
+				<a class="{{ activeMenu('login') }}" href="/login" title="">Login</a>
+			@endif
+			
 				
 		</nav>
 	</header><!-- /header -->

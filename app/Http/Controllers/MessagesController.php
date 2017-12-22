@@ -9,6 +9,16 @@ use Illuminate\Http\Request;
 
 class MessagesController extends Controller
 {
+
+    function __construct()
+    {
+      //Esta definicion aplica para todos los metodos
+      //$this->middleware('auth');
+
+      //Se deben indicar todos los metodos que pertenescan a un mismo flujo
+      $this->middleware('auth',[ 'except' => ['create' , 'store' ] ]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -73,7 +83,8 @@ class MessagesController extends Controller
       //ELOQUENT - forma 4
       Message::create($request->all());
 
-        return redirect()->route('mensajes.index');
+        return redirect()->route('mensajes.create')
+                         ->with('info','Hemos recibido tu mensaje');
     }
 
     /**

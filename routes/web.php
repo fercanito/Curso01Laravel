@@ -13,12 +13,29 @@
 
 
 Route::get('/',['as' => 'home', 'uses' => 'PagesController@home' ]);
-Route::get('contactame',['as' => 'contactos', 'uses' => 'PagesController@contact' ]);
-Route::post('contacto', 'PagesController@mensajes' );
 Route::get('saludos/{nombre?}',['as' => 'saludos', 'uses' => 'PagesController@saludo'])->where('nombre',"[A-Za-z]+");
 
-
+//Implementacion de arquitectura REpresentational state transfer  REST
 Route::resource('mensajes', 'MessagesController');
+
+
+//insert user
+Route::get('adduser', function() {
+    
+  $user = new App\User;
+  $user->name = 'Juan P';
+  $user->email = 'juan@correo.com';
+  $user->password = bcrypt('12345678');
+  $user->save();
+
+  return $user;
+
+});
+
+//login custom
+Route::get('login','Auth\LoginController@showLoginForm')->name('login');
+Route::post('login','Auth\LoginController@login');
+Route::get('logout','Auth\LoginController@logout');
 
 //Implementacion de arquitectura REpresentational state transfer  REST
 /*Route::get('mensajes',['as' => 'messages.index', 'uses' => 'MessagesController@index']);
