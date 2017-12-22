@@ -16,7 +16,7 @@ class PagesController extends Controller
     
     //$this->middleware('example',[ 'only' => ['home'] ]);
     //$this->middleware('example');
-    $this->middleware('example',[ 'except' => ['home'] ]);
+    //$this->middleware('example',[ 'except' => ['home'] ]);
 
   }
 

@@ -35,7 +35,7 @@
 					<a class="{{ activeMenu('saludos/*') }}" href="{{ route('saludos') }}" title="">Saludos</a>
 				</li>
 				<li>
-					<a class="{{ activeMenu('contactame') }}" href="{{ route('contactos') }}" title="">Contactos</a>
+					<a class="{{ activeMenu('contactame') }}" href="{{ route('messages.create') }}" title="">Contactos</a>
 				</li>
 
 				

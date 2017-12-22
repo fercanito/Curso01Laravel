@@ -6,7 +6,7 @@
 @if (session()->has('info'))
 	<h3>{{ session('info') }}</h3>
 @else
-	<form method="POST" action="contacto" accept-charset="utf-8">
+	<form method="POST" action=" {{ route('messages.store') }} " accept-charset="utf-8">
 
 		{!! csrf_field() !!}
 		<p> <label for="nombre">
