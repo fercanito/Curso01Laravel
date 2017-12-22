@@ -27,19 +27,15 @@
 
 		<h1>{{ request()->is('/') ? 'Estas en el home' : 'No estas en el home' }}</h1>
 		<nav>
-			<ul>
-				<li>
-					<a class="{{ activeMenu('/') }}" href="{{ route('home') }}" title="">Inicio</a>
-				</li>
-				<li>
-					<a class="{{ activeMenu('saludos/*') }}" href="{{ route('saludos') }}" title="">Saludos</a>
-				</li>
-				<li>
-					<a class="{{ activeMenu('contactame') }}" href="{{ route('messages.create') }}" title="">Contactos</a>
-				</li>
-
+			
+			<a class="{{ activeMenu('/') }}" href="{{ route('home') }}" title="">Inicio</a>
 				
-			</ul>
+			<a class="{{ activeMenu('saludos/*') }}" href="{{ route('saludos') }}" title="">Saludos</a>
+				
+			<a class="{{ activeMenu('mensajes/create') }}" href="{{ route('messages.create') }}" title="">Contactos</a>
+
+			<a class="{{ activeMenu('mensajes') }}" href="{{ route('messages.index') }}" title="">Mensajes</a>
+				
 		</nav>
 	</header><!-- /header -->
 	@yield('contenido')
