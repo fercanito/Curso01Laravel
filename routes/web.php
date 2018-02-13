@@ -15,8 +15,7 @@
 Route::get('/',['as' => 'home', 'uses' => 'PagesController@home' ]);
 Route::get('saludos/{nombre?}',['as' => 'saludos', 'uses' => 'PagesController@saludo'])->where('nombre',"[A-Za-z]+");
 
-//Implementacion de arquitectura REpresentational state transfer  REST
-Route::resource('mensajes', 'MessagesController');
+
 
 
 //insert user
@@ -36,6 +35,10 @@ Route::get('adduser', function() {
 Route::get('login','Auth\LoginController@showLoginForm')->name('login');
 Route::post('login','Auth\LoginController@login');
 Route::get('logout','Auth\LoginController@logout');
+
+//Implementacion de arquitectura REpresentational State Transfer  REST
+Route::resource('mensajes', 'MessagesController');
+
 
 //Implementacion de arquitectura REpresentational state transfer  REST
 /*Route::get('mensajes',['as' => 'messages.index', 'uses' => 'MessagesController@index']);
