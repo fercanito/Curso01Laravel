@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password'
     ];
 
     /**
@@ -26,4 +26,17 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function hasRoles(array $roles)
+    {   
+      foreach ($roles as $rol) {
+
+        if ($this->rol === $rol) {
+          return true;
+        }
+
+      }
+      return false;
+    }
+
 }

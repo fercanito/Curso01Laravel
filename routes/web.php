@@ -22,9 +22,10 @@ Route::get('saludos/{nombre?}',['as' => 'saludos', 'uses' => 'PagesController@sa
 Route::get('adduser', function() {
     
   $user = new App\User;
-  $user->name = 'Juan P';
-  $user->email = 'juan@correo.com';
+  $user->name = 'Estudiante';
+  $user->email = 'est@correo.com';
   $user->password = bcrypt('12345678');
+  $user->rol = 'estudiante';
   $user->save();
 
   return $user;
@@ -38,6 +39,7 @@ Route::get('logout','Auth\LoginController@logout');
 
 //Implementacion de arquitectura REpresentational State Transfer  REST
 Route::resource('mensajes', 'MessagesController');
+Route::resource('usuarios', 'UsersController');
 
 
 //Implementacion de arquitectura REpresentational state transfer  REST

@@ -47,29 +47,28 @@
 						<li class="{{ activeMenu('mensajes') }}">
 								<a href="{{ route('mensajes.index') }}" title="">Mensajes</a>
 						</li>	
+							@if (auth()->user()->hasRoles(['admin','moderador']))
+							<li class="{{ activeMenu('usuarios') }}">
+									<a href="{{ route('usuarios.index') }}" title="">Usuarios</a>
+							</li>	
+							@endif
 						@endif				
 
     		
     			</ul>
     			<ul class="nav navbar-nav navbar-right">
-							@if (auth()->guest())
-						<li class="{{ activeMenu('login') }}">
-								<a href="/login" title="">Login</a>
-						</li>		
-						@else
-						<li class="{{ activeMenu('logout') }}">
-								<a href="/logout" title="">Cerrar sesión de {{ auth()->user()->email }}</a>
-						</li>			
-						@endif
-    				<li class="dropdown">
-    					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-    					<ul class="dropdown-menu">
-    						<li><a href="#">Action</a></li>
-    						<li><a href="#">Another action</a></li>
-    						<li><a href="#">Something else here</a></li>
-    						<li><a href="#">Separated link</a></li>
-    					</ul>
-    				</li>
+						@if (auth()->guest())
+							<li class="{{ activeMenu('login') }}">
+									<a href="/login" title="">Login</a>
+							</li>		
+						@else											
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ auth()->user()->email }} <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="/logout">Cerrar sesión</a></li>
+								</ul>
+							</li>						
+						@endif    			
     			</ul>
     		</div><!-- /.navbar-collapse -->
     	</div>
