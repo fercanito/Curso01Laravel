@@ -11,7 +11,8 @@ class UsersController extends Controller
     function __construct()
     {
         $this->middleware([
-            'auth','roles:admin,moderador'
+            'auth',
+            'roles:admin,moderador'
         ]);
     }
 

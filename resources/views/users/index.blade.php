@@ -25,7 +25,7 @@
 				{{  $user->name  }}
 			</td>
 			<td>{{  $user->email   }}</td>
-			<td>{{  $user->rol }}</td>
+			<td>{{  $user->role->display_name }}</td>
 			<th>
 			
 			</th>

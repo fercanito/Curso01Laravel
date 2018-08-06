@@ -27,11 +27,16 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function role()
+    {
+      return $this->belongsTo('App\Role');
+    }
+
     public function hasRoles(array $roles)
     {   
       foreach ($roles as $rol) {
 
-        if ($this->rol === $rol) {
+        if ($this->role->name === $rol) {
           return true;
         }
 
