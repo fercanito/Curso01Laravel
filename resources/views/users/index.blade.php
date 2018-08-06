@@ -30,13 +30,20 @@
 				{{  $role->display_name }}
 				@endforeach				
 			</td>
-			<th>
-			
-			</th>
+			<td>
+					<a href="{{ route('usuarios.edit' , $user->id) }} " class="btn btn-info btn-xs">Editar</a>
+					<form style="display: inline;" 
+						method="POST" 
+						action="{{ route('usuarios.destroy', $user->id) }}" accept-charset="utf-8">
+						{!! method_field('DELETE') !!}
+						{!! csrf_field() !!}
+						<button class="btn btn-danger btn-xs" type="submit">Eliminar</button>
+					</form>
+			</td>
 			
 		</tr>
 		@empty
-			<p>No hay mensajes :(</p>
+			<p>No hay Usuarios :(</p>
 		@endforelse
 
 		
