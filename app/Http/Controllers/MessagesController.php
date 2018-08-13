@@ -6,6 +6,7 @@ use DB;
 use App\Message;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateMessageRequest;
 
 class MessagesController extends Controller
 {
@@ -48,7 +49,7 @@ class MessagesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateMessageRequest $request)
     {
       //QUERY BUILDER
       /*DB::table('messages')->insert([
@@ -81,7 +82,18 @@ class MessagesController extends Controller
       ]);*/
 
       //ELOQUENT - forma 4
-      Message::create($request->all());
+      //$message = Message::create($request->all());
+
+      //Permite guardar un registro para un usuario autenticado y no autenticado
+      /* $message = Message::create($request->all());
+      if ( auth()->check() ) {
+
+        auth()->user()->messages()->save($message); //con save() se asigna el usuario al mensaje ya guardado
+
+      } */
+
+      auth()->user()->messages()->create($request->all());
+
 
         return redirect()->route('mensajes.create')
                          ->with('info','Hemos recibido tu mensaje');
