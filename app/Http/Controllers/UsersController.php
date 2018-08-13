@@ -11,8 +11,8 @@ class UsersController extends Controller
 
     function __construct()
     {
-        $this->middleware('auth');
-        $this->middleware('roles:admin', ['except' => ['edit','update'] ]);
+        $this->middleware('auth',['except' => ['show']]);
+        $this->middleware('roles:admin', ['except' => ['edit','update','show'] ]);
     }
 
     /**
@@ -56,7 +56,9 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        return view('users.show')->with('user',$user);
     }
 
     /**
@@ -95,6 +97,12 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        $this->authorize('destroy',$user);
+
+        $user->delete();
+
+        return back();
     }
 }

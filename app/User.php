@@ -38,7 +38,7 @@ class User extends Authenticatable
 
         foreach ($this->roles as $userRole) {
 
-          if ($userRole->name === $rol) {
+          if ($userRole->name == $rol) {
             return true;
           }
 
@@ -50,7 +50,7 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-     $this->hasRoles(['admin']) ;
+      return $this->hasRoles(['admin']);
     }
 
 }

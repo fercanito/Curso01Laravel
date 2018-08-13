@@ -65,8 +65,8 @@
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ auth()->user()->email }} <b class="caret"></b></a>
 								<ul class="dropdown-menu">
-									<li><a href="/logout">Cerrar sesión</a></li>
 									<li><a href="/usuarios/{{ auth()->id() }}/edit">Mi Cuenta</a></li>
+									<li><a href="/logout">Cerrar sesión</a></li>									
 								</ul>
 							</li>						
 						@endif    			
