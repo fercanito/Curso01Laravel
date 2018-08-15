@@ -8,24 +8,11 @@
   </div>
 
 @endif
-<form method="POST" action=" {{ route('usuarios.update' , $user->id) }} " accept-charset="utf-8">
+	<form method="POST" action=" {{ route('usuarios.update' , $user->id) }} " accept-charset="utf-8">
 
-		{!! method_field('PUT') !!}
-
-		{!! csrf_field() !!}
-		<p> <label for="nombre">
-			Nombre
-			<input type="text" class="form-control" name="name" value="{{ $user->name }}">
-			{!! $errors->first('name','<span class=error>:message</span>') !!}
-		</label></p>
-
-		<p> <label for="email">
-			Email
-			<input type="text" class="form-control" name="email" value="{{ $user->email }}">
-			{!! $errors->first('email','<span class=error>:message</span>') !!}
-		</label></p>
-
-	
+		{!! method_field('PUT') !!}		
+		
+		@include('users.form')
 
 		<input  class="btn btn-primary" type="submit" value="Enviar">
 

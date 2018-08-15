@@ -27,6 +27,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function setPasswordAttribute($password) //hacer algo por defecto en un campo antes de guardar
+    {
+      $this->attributes['password'] = bcrypt($password);
+    }
+
     public function roles()
     {
       return $this->belongsToMany('App\Role','assigned_roles');
