@@ -11,6 +11,7 @@
 			<th>Nombre</th>
 			<th>Email</th>
 			<th>Rol</th>
+			<th>Notas</th>
 			<th>Acciones</th>
 		</tr>
 	</thead>
@@ -27,6 +28,9 @@
 			<td>{{  $user->email   }}</td>
 			<td>
 				{{ $user->roles->pluck('display_name')->implode(' - ') }}		
+			</td>
+			<td>
+				{{ $user->note->body }}
 			</td>
 			<td>
 					<a href="{{ route('usuarios.edit' , $user->id) }} " class="btn btn-info btn-xs">Editar</a>

@@ -6,9 +6,11 @@
 <table class="table">
 	<thead>
 		<tr>
+			<th>ID</th>
 			<th>Nombre</th>
 			<th>Email</th>
 			<th>Mensaje</th>
+			<th>Notas</th>
 			<th>Acciones</th>
 		</tr>
 	</thead>
@@ -32,6 +34,9 @@
 
 			<td>
 					<a href="{{ route('mensajes.show' , $message->id) }}">{{  $message->mensaje }}</a>
+			</td>
+			<td>				
+				{{ $message->note->body }}
 			</td>
 			<th>
 				<a href="{{ route('mensajes.edit' , $message->id) }} " class="btn btn-info btn-xs">Editar</a>

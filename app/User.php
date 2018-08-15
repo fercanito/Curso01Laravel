@@ -40,7 +40,6 @@ class User extends Authenticatable
     public function hasRoles(array $roles)
     {    
       return $this->roles->pluck('name')->intersect($roles)->count();    
-
     }
 
     public function isAdmin()
@@ -48,8 +47,17 @@ class User extends Authenticatable
       return $this->hasRoles(['admin']);
     }
 
-    public function messages(){
+    public function messages()
+    {
       return $this->hasMany(Message::class);
+    }
+
+     /**
+     * Relacion polimorfica
+     */
+    public function note()
+    {
+        return $this->morphOne(Note::class,'notable'); //se agrega el prefijo de la migracion
     }
 
 }
