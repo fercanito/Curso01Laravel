@@ -60,4 +60,12 @@ class User extends Authenticatable
         return $this->morphOne(Note::class,'notable'); //se agrega el prefijo de la migracion
     }
 
+    /**
+     * Relacion polimorfica - muchos a muchos
+     */
+    public function tags()
+    {
+        return $this->morphToMany(Tag::class,'taggable')->withTimestamps();
+    }
+
 }

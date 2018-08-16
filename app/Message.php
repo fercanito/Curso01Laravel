@@ -31,5 +31,10 @@ class Message extends Model
         return $this->morphOne(Note::class,'notable'); //se agrega el prefijo de la migracion
     }
 
+    public function tags()
+    {
+        return $this->morphToMany(Tag::class,'taggable');
+    }
+
 }
 
