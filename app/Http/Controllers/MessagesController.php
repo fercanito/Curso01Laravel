@@ -28,7 +28,13 @@ class MessagesController extends Controller
     public function index()
     {
       
-      $messages = Message::all();
+      //$messages = Message::all();
+
+      /**
+       * Optimizacion de tiempos de consultas - eager loading [precargar modelos]
+       */
+
+      $messages = Message::with(['user','note','tags'])->get();
 
       return view('messages.index' , compact('messages'));
     }

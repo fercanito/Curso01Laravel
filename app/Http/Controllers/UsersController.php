@@ -24,7 +24,13 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        //$users = User::all();
+
+        /**
+       * Optimizacion de tiempos de consultas - eager loading [precargar modelos]
+       */
+
+        $users = User::with(['roles','note','tags'])->get();
 
         return view('users.index', compact('users'));
     }

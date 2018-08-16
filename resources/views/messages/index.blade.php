@@ -37,7 +37,7 @@
 					<a href="{{ route('mensajes.show' , $message->id) }}">{{  $message->mensaje }}</a>
 			</td>
 			<td>				
-				{{ $message->note->body }}
+				{{ $message->note ? $message->note->body : '' }} {{-- si existe la nota la muestro, en caso contrario no muestra nada --}}
 			</td>
 			<td>
 				{{ $message->tags->pluck('name')->implode(', ') }}

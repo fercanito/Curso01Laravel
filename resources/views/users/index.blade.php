@@ -31,7 +31,7 @@
 				{{ $user->roles->pluck('display_name')->implode(' - ') }}		
 			</td>
 			<td>
-				{{ $user->note->body }}
+				{{ $user->note ? $user->note->body : '' }} {{-- si existe la nota la muestro, en caso contrario no muestra nada --}}
 			</td>
 			<td>
 				{{ $user->tags->pluck('name')->implode(', ') }}

@@ -8,7 +8,10 @@
 @else
 	<form method="POST" action=" {{ route('mensajes.store') }} " accept-charset="utf-8">
 
-		@include('messages.form')
+		@include('messages.form',[
+			'message' => new App\Message,
+			'showFields' => auth()->guest()
+		])
 
 	</form>
 	@endif

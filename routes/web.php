@@ -12,11 +12,13 @@
 */
 
 
+DB::listen(function ($query)
+{
+  echo "<pre>{$query->sql}</pre>";
+});
+
 Route::get('/',['as' => 'home', 'uses' => 'PagesController@home' ]);
 Route::get('saludos/{nombre?}',['as' => 'saludos', 'uses' => 'PagesController@saludo'])->where('nombre',"[A-Za-z]+");
-
-
-
 
 //insert user
 Route::get('adduser', function() {

@@ -1,5 +1,5 @@
 {!! csrf_field() !!}
-@unless( isset($message) and $message->user_id)
+@if($showFields)
   <p> <label for="nombre">
     Nombre
     <input type="text" class="form-control" name="nombre" 
@@ -13,7 +13,7 @@
       value="{{ $message->email or old('email') }}">
     {!! $errors->first('email','<span class=error>:message</span>') !!}
   </label></p>
-@endunless
+@endif
 
 <p><label for="mensaje">
   Mensaje

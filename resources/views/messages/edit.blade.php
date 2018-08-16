@@ -8,7 +8,10 @@
 	<form method="POST" action=" {{ route('mensajes.update' , $message->id) }} " accept-charset="utf-8">
 
 		{!! method_field('PUT') !!}
-		@include('messages.form',['btnText' => 'Actualizar'])
+		@include('messages.form',[
+			'btnText' => 'Actualizar',
+			'showFields' => ! $message->user_id
+		])
 
 	</form>
 	@endif
