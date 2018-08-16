@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
+use Mail;
 use App\Message;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -91,14 +92,24 @@ class MessagesController extends Controller
       //$message = Message::create($request->all());
 
       //Permite guardar un registro para un usuario autenticado y no autenticado
-      /* $message = Message::create($request->all());
+      $message = Message::create($request->all());
       if ( auth()->check() ) {
 
         auth()->user()->messages()->save($message); //con save() se asigna el usuario al mensaje ya guardado
 
-      } */
+      }
 
-      auth()->user()->messages()->create($request->all());
+      Mail::send('emails.contact',['msg' => $message],function($m) use ($message){
+
+        /**
+         * To: (email destino, nombre destino)
+         */
+        $m->to($message->email, $message->nombre)->subject('Tu mensaje fue recibido');
+
+      });
+
+      //Forma para un usuario que siempre esta autenticado
+      //auth()->user()->messages()->create($request->all());
 
 
         return redirect()->route('mensajes.create')

@@ -11,11 +11,13 @@
 |
 */
 
-
-DB::listen(function ($query)
+/**
+ * Metodo para hacer debug de las consultas SQL ejecutadas en una peticion
+ */
+/* DB::listen(function ($query)
 {
   echo "<pre>{$query->sql}</pre>";
-});
+}); */
 
 Route::get('/',['as' => 'home', 'uses' => 'PagesController@home' ]);
 Route::get('saludos/{nombre?}',['as' => 'saludos', 'uses' => 'PagesController@saludo'])->where('nombre',"[A-Za-z]+");
