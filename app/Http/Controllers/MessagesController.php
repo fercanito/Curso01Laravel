@@ -7,6 +7,7 @@ use Mail;
 use App\Message;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Events\MessageWasReceived;
 use App\Http\Requests\CreateMessageRequest;
 
 class MessagesController extends Controller
@@ -48,7 +49,7 @@ class MessagesController extends Controller
     public function create()
     {
       //Metodo para utilizar configuraciones de terceros
-      dd(config('services.2checkout.key'));
+      //dd(config('services.2checkout.key'));
       return view('messages.create');
     }
 
@@ -100,15 +101,8 @@ class MessagesController extends Controller
         auth()->user()->messages()->save($message); //con save() se asigna el usuario al mensaje ya guardado
 
       }
-
-      Mail::send('emails.contact',['msg' => $message],function($m) use ($message){
-
-        /**
-         * To: (email destino, nombre destino)
-         */
-        $m->to($message->email, $message->nombre)->subject('Tu mensaje fue recibido');
-
-      });
+      event(new MessageWasReceived($message));
+     
 
       //Forma para un usuario que siempre esta autenticado
       //auth()->user()->messages()->create($request->all());
