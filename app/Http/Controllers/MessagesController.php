@@ -47,7 +47,9 @@ class MessagesController extends Controller
      */
     public function create()
     {
-        return view('messages.create');
+      //Metodo para utilizar configuraciones de terceros
+      dd(config('services.2checkout.key'));
+      return view('messages.create');
     }
 
     /**

@@ -35,4 +35,8 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    '2checkout' => [        
+        'key' => env('2CHECKOUT_KEY')
+    ],
+
 ];
